@@ -1,7 +1,7 @@
 export component NfcWriterUI inherits Window {
     width: 320px;
     height: 240px;
-    background: #0d0f12;
+    background: #cfe1fc;
 
     // Values pushed in from Rust. `in-out` generates a `set_*` on the Rust side.
     in-out property <string> preset: "";
@@ -16,9 +16,9 @@ export component NfcWriterUI inherits Window {
         spacing: 3px;
 
         Text {
-            text: "NFC WRITER";
-            color: #e2905a;
-            font-size: 14px;
+            text: "NFC Writer";
+            color: #0019cb;
+            font-size: 16px;
             font-weight: 700;
         }
 
