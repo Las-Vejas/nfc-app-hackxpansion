@@ -1,0 +1,37 @@
+// For your app to use your UI, it has to export a component that inherits Window
+export component ButtonLoggerUI inherits Window {
+    // These are the dimensions of the physical screen
+    width: 320px;
+    height: 240px;
+
+    // This is a reactive property that we will set from our app's logic code
+    in-out property <int> count: 0;
+
+    // White BG
+    Rectangle {
+        width: parent.width;
+        height: parent.height;
+        background: #ffffff;
+    }
+
+    // Just like flex in CSS
+    VerticalLayout {
+        width: parent.width;
+        height: parent.height;
+        alignment: center;
+
+        Text {
+            // Displaying the reactive count property
+            text: "Clicks: " + root.count;
+            color: #008000;
+            horizontal-alignment: center;
+        }
+
+        // Each app should have a way to exit
+        Text {
+            text: "Hold A to exit";
+            color: #000000;
+            horizontal-alignment: center;
+        }
+    }
+}
