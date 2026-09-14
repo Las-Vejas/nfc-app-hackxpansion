@@ -1,0 +1,11 @@
+[package]
+name = "nfc-app-hackxpansion"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+slint = "1.17.1"
+xpanse-api = "0.2.3"
+
+[build-dependencies]
+slint-build = "1.17.1"
