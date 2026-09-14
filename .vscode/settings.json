@@ -1,0 +1,14 @@
+{
+  // This crate builds for thumbv8m.main-none-eabihf, where there is no `test`
+  // crate, no global allocator and no panic handler — those come from the
+  // firmware binary that links us.
+  //
+  // By default rust-analyzer runs `cargo check --all-targets`, which tries to
+  // build the lib *test harness* and reports three errors against line 1:
+  //   can't find crate for `test`
+  //   no global memory allocator found
+  //   `#[panic_handler]` function required, but not found
+  //
+  // None of them are real. Checking only the lib target makes them go away.
+  "rust-analyzer.check.allTargets": false
+}

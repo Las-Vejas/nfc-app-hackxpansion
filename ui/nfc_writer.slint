@@ -1,0 +1,84 @@
+export component NfcWriterUI inherits Window {
+    width: 320px;
+    height: 240px;
+    background: #cfe1fc;
+
+    // Values pushed in from Rust. `in-out` generates a `set_*` on the Rust side.
+    in-out property <string> preset: "";
+    in-out property <string> status: "";
+    in-out property <string> tag-text: "";
+    in-out property <string> hex: "";
+    in-out property <bool> field-on: false;
+    in-out property <bool> show-hex: false;
+
+    VerticalLayout {
+        padding: 10px;
+        spacing: 3px;
+
+        Text {
+            text: "NFC Writer";
+            color: #0019cb;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        Rectangle {
+            height: 1px;
+            background: #2c333c;
+        }
+
+        Text {
+            text: "WRITE";
+            color: #7d8894;
+            font-size: 10px;
+        }
+
+        Text {
+            text: root.preset;
+            color: #e6e9ed;
+            font-size: 13px;
+            wrap: word-wrap;
+        }
+
+        Text {
+            text: root.show-hex ? "ON TAG (HEX)" : "ON TAG";
+            color: #7d8894;
+            font-size: 10px;
+        }
+
+        Text {
+            text: root.show-hex ? root.hex : root.tag-text;
+            color: #8fb4e4;
+            font-size: 11px;
+            wrap: word-wrap;
+        }
+
+        // Soaks up the leftover space so the footer sits at the bottom.
+        Rectangle {
+            vertical-stretch: 1;
+        }
+
+        HorizontalLayout {
+            spacing: 8px;
+
+            Text {
+                text: root.status;
+                color: #cfe3d6;
+                font-size: 11px;
+                horizontal-stretch: 1;
+            }
+
+            Text {
+                text: root.field-on ? "FIELD ON" : "no field";
+                color: root.field-on ? #7dd6a0 : #4a5560;
+                font-size: 11px;
+            }
+        }
+
+        Text {
+            text: "A write   B next   X read   Y hex   hold A exit";
+            color: #5c6670;
+            font-size: 10px;
+        }
+    }
+}
